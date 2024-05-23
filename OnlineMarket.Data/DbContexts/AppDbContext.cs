@@ -9,4 +9,6 @@ public class AppDbContext(DbContextOptions<AppDbContext> options)
     DbSet<User> Users { get; set; }
     DbSet<Product> Products { get; set; }
     DbSet<Category> Categories { get; set; }
+
+    
 }
