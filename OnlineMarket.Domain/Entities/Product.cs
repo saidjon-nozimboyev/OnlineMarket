@@ -6,4 +6,7 @@ public class Product : Base
     public string ProductDescription { get; set; } = string.Empty;
     public double ProductPrice { get; set; } 
     public int ProductPiece { get; set; }
-    public double ProductRating { get; set; }}>>>>>>> master
+    public double ProductRating { get; set; }
+
+    public Category Category = null!;
+}
