@@ -6,7 +6,7 @@ namespace OnlineMarket.Data.DbContexts;
 public class AppDbContext(DbContextOptions<AppDbContext> options)
     : DbContext(options)
 {
-    DbSet<User> Users { get; set; }
-    DbSet<Product> Products { get; set; }
-    DbSet<Category> Categories { get; set; }
+    public DbSet<User> Users { get; set; }
+    public DbSet<Product> Products { get; set; }
+    public DbSet<Category> Categories { get; set; }
 }
