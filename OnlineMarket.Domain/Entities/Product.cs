@@ -8,4 +8,6 @@ public class Product : Base
     public int ProductPiece { get; set; }
     public double ProductRating { get; set; } = 5; 
     public int CategoryId { get; set; } 
+
+    public Category Category = null!;
 }
