@@ -37,9 +37,10 @@ public class ProductService(IUnitOfWork unitOfWork,
         await _unitOfWork.Product.DeleteAsync(product);
     }
 
-    public Task<IEnumerable<ProductDto>> GetAllAsync()
+    public async Task<IEnumerable<ProductDto>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        var products = await _unitOfWork.Product.GetAllAsync(x => x.ProductPrice > 0);
+        return products.Select(x => (ProductDto)x);
     }
 
     public async Task<IEnumerable<Product>> GetByCategoryAsync(string categoryName)

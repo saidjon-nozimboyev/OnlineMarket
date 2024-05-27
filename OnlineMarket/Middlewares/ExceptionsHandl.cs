@@ -4,7 +4,7 @@ using OnlineMarket.Application.DTOs.Common;
 
 namespace OnlineMarket.Middlewares;
 
-public class ExceptionsHandle(RequestDelegate next)
+public class ExceptionsHandl(RequestDelegate next)
 {
     private readonly RequestDelegate _next = next;
     public async Task InvokeAsync(HttpContext context)

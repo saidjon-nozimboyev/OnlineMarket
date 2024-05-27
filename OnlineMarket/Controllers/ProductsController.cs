@@ -19,6 +19,20 @@ public class ProductsController(IProductService productService) : ControllerBase
         return Ok();
     }
 
+    [HttpGet("category")]
+    public async Task<IActionResult> GetByCategoryAsync(string categoty)
+    {
+        var result = await _productService.GetByCategoryAsync(categoty);
+        return Ok(result);
+    }
+
+    [HttpGet("price")]
+    public async Task<IActionResult> GetByPrice(double price)
+    {
+        var result = await _productService.GetByPriceAsync(price);
+        return Ok(result);
+    }
+
     [HttpPut]
     [Authorize(Roles = "Admin, SuperAdmin")]
     public async Task<IActionResult> UpdateAsync(ProductDto dto)

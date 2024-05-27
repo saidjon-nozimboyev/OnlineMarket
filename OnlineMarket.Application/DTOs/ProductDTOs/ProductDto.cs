@@ -5,6 +5,7 @@ namespace OnlineMarket.Application.DTOs.ProductDTOs;
 public class ProductDto : AddProductDto
 {
     public int Id { get; set; }
+
     public static implicit operator ProductDto(Product product)
     {
         return new ProductDto

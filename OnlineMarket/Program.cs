@@ -8,6 +8,7 @@ using OnlineMarket.Data.DbContexts;
 using OnlineMarket.Data.Interfaces;
 using OnlineMarket.Data.Repositories;
 using OnlineMarket.Domain.Entities;
+using OnlineMarket.Middlewares;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -62,7 +63,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
+
+app.UseMiddleware<ExceptionsHandl>();
 
 app.MapControllers();
 

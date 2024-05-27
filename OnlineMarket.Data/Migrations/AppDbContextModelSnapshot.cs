@@ -38,7 +38,7 @@ namespace OnlineMarket.Data.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("OnlineMarket.Domain.Entities.Product", b =>
+            modelBuilder.Entity("OnlineMarket.Domain.Entities.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -48,6 +48,26 @@ namespace OnlineMarket.Data.Migrations
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("integer");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("OnlineMarket.Domain.Entities.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ProductDescription")
                         .IsRequired()
@@ -111,6 +131,39 @@ namespace OnlineMarket.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "saidjonnozimboyevv@gmail.com",
+                            FirstName = "SuperAdmin",
+                            Gender = 1,
+                            IsVerified = true,
+                            LastName = "Boss",
+                            Password = "6596443e7768f0c1ae055535783a3b6fcd3c2efb4fc0725336e31e087c4d10fc",
+                            PhoneNumber = "+998930469959",
+                            Role = 1
+                        });
+                });
+
+            modelBuilder.Entity("OnlineMarket.Domain.Entities.Order", b =>
+                {
+                    b.HasOne("OnlineMarket.Domain.Entities.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("OnlineMarket.Domain.Entities.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Product");
                 });
 #pragma warning restore 612, 618
         }

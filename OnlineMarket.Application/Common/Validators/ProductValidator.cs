@@ -7,12 +7,6 @@ public class ProductValidator : AbstractValidator<Product>
 {
     public ProductValidator()
     {
-        RuleFor(p => p.Id)
-            .NotEmpty()
-            .WithMessage("Category ID is required")
-            .GreaterThan(0)
-            .WithMessage("Category ID must be greater than 0");
-
         RuleFor(p => p.ProductName)
             .NotEmpty()
             .WithMessage("Product name is required")
