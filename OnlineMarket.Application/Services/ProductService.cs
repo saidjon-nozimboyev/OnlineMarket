@@ -76,9 +76,6 @@ public class ProductService(IUnitOfWork unitOfWork,
         if (!result.IsValid)
             throw new ValidationException(result.GetErrorMessages());
 
-        // Update the existing product with values from dto
-        // ... (e.g., existingProduct.Name = dto.Name, etc.)
-
         await _unitOfWork.Product.UpdateAsync(existingProduct);
     }
 }
