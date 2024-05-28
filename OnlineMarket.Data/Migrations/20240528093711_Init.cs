@@ -30,6 +30,7 @@ namespace OnlineMarket.Data.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    CategoryId = table.Column<int>(type: "integer", nullable: false),
                     ProductName = table.Column<string>(type: "text", nullable: false),
                     ProductDescription = table.Column<string>(type: "text", nullable: false),
                     ProductPrice = table.Column<double>(type: "double precision", nullable: false),
