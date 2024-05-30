@@ -24,8 +24,7 @@ public class ProductRepository(AppDbContext dbContext)
     public async Task<IEnumerable<Product>> GetProductByCategoryAsync(string categoryName)
     {
         return await _dbContext.Products
-                               .Include(p => p.ProductPrice)
-                               .Where(p => p.Category.CategoryName == categoryName)
-                               .ToListAsync();
+                           .Where(p => p.Category.CategoryName == categoryName)
+                           .ToListAsync();
     }
 }

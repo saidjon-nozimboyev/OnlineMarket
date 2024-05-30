@@ -11,7 +11,7 @@ using OnlineMarket.Data.DbContexts;
 namespace OnlineMarket.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240528093711_Init")]
+    [Migration("20240528103545_Init")]
     partial class Init
     {
         /// <inheritdoc />

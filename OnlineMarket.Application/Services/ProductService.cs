@@ -45,8 +45,17 @@ public class ProductService(IUnitOfWork unitOfWork,
 
     public async Task<IEnumerable<Product>> GetByCategoryAsync(string categoryName)
     {
-        var products = await _unitOfWork.Product.GetAllAsync(x => x.ProductPrice > 0);
-        return (IEnumerable<Product>)products.Select(x => (ProductDto)x).ToList();
+        var products = await _unitOfWork.Product.GetAllAsync(x => x.ProductPrice > 0 && x.Category.CategoryName == categoryName);
+
+        return (IEnumerable<Product>)products.Select(x => new ProductDto
+        {
+            Id = x.Id,
+            ProductName = x.ProductName,
+            ProductDescription = x.ProductDescription, // Map other properties
+            ProductPrice = x.ProductPrice,
+            ProductPiece = x.ProductPiece,
+            ProductRating = x.ProductRating,
+        }).ToList();
     }
 
     public async Task<ProductDto?> GetByIdAsync(int id)

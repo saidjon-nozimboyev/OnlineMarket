@@ -17,6 +17,7 @@ public class ProductDto : AddProductDto
             ProductPiece = product.ProductPiece,
             ProductPrice = product.ProductPrice,
             ProductRating = product.ProductRating,
+            CategoryId = product.CategoryId,
         };
     }
 
@@ -31,6 +32,7 @@ public class ProductDto : AddProductDto
             ProductPiece = product.ProductPiece,
             ProductPrice = product.ProductPrice,
             ProductRating = product.ProductRating,
+            CategoryId = product.CategoryId,
         };
     }
 }
