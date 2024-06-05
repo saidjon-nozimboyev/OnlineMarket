@@ -20,7 +20,6 @@ public class UserService(IUnitOfWork unitOfWork) : IUserService
 
         throw new StatusCodeException(HttpStatusCode.OK, "User has been deleted sucessfully");
     }
-
     public async Task<IEnumerable<UserDto>> GetAllAsync()
     {
         var users = await _unitOfWork.User.GetAllAsync(x => x.IsVerified == true);
