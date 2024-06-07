@@ -40,7 +40,6 @@ public class CategoriesController(ICategoryService categoryService) : Controller
     }
 
     [HttpPut]
-    [Authorize(Roles = "Admin, SuperAdmin")]
     public async Task<IActionResult> UpdateAsync([FromBody] CategoryDto dto)
     {
         await _categoryService.UpdateAsync(dto);
