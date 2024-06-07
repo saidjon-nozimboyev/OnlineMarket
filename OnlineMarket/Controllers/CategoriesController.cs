@@ -20,7 +20,6 @@ public class CategoriesController(ICategoryService categoryService) : Controller
     }
 
     [HttpGet("id")]
-    [Authorize(Roles = "Admin, SuperAdmin")]
     public async Task<IActionResult> GetByIdAsync(int id)
     {
         await _categoryService.GetByIdAsync(id);
